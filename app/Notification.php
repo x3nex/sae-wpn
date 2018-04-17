@@ -15,5 +15,5 @@ class Notification extends Model
         return $this->belongsTo(\App\Student::class);
     }
 
-}
+
 }

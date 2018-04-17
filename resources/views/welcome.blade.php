@@ -83,11 +83,18 @@
                     <br>
                     Web Push Notifications
 
-                    <button id=""></button>
+
                 </div>
 
 
             </div>
         </div>
+        <script>
+            OneSignal.push(function() {
+                OneSignal.showHttpPrompt();
+            });
+        </script>
+
+
     </body>
 </html>

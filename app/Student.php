@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = ['studentID', 'playerID'];
+    protected $fillable = ['studentID', 'userID'];
 
 
     public function notifications()
