@@ -34,7 +34,7 @@ class GetUserIDController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
