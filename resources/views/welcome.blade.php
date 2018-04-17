@@ -7,6 +7,20 @@
         <title>SAE Web Push Notifications</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+            var OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+                OneSignal.init({
+                    appId: "4d6ac746-a6a2-45c8-baaf-ef15c5d850a9",
+                    autoRegister: false,
+                    notifyButton: {
+                        enable: true,
+                    },
+                });
+            });
+        </script>
+
         </head>
     <body>
     <div class="wrapper">
