@@ -103,7 +103,11 @@
                         /* If the user's subscription state changes during the page's session, update the button text */
                         updateMangeWebPushSubscriptionButton(buttonSelector);
                     });
+
+
                 });
+
+
             </script>
         </main>
     </div>

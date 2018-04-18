@@ -34,7 +34,10 @@ class GetUserIDController extends Controller
      */
     public function store(Request $request)
     {
-
+//        App::get('database')->insert('students', [
+//            'studendID' => $_POST['studentID'],
+//            'userID' => $_POST['userID']
+//        ]);
     }
 
     /**
