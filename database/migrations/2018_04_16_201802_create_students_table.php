@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->string('studentID')->unique();
             $table->string('userID');
+           // $table->string('userID2');
             $table->timestamps();
         });
     }

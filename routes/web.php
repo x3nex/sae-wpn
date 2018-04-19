@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/products/new', 'GetUserIDController@index');
-Route::post('admin/products/new', 'GetUserIDController@insert');
 
-Route::get('admin/products/new', 'GetUserNotificationsController@index');
-Route::post('admin/products/new', 'GetUserNotificationsController@insert');
+
+Route::get('/setUserID/{studentID}/{userID}', 'GetUserIDController@store')->name('getID');

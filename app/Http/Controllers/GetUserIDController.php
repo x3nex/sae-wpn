@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
+
 
 class GetUserIDController extends Controller
 {
@@ -13,7 +17,8 @@ class GetUserIDController extends Controller
      */
     public function index()
     {
-        //
+
+
     }
 
     /**
@@ -32,13 +37,14 @@ class GetUserIDController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $studentID, $userID)
     {
-        
+        DB::insert('insert into students(studentID,userID) values(?,?)',[$studentID,$userID]);
 //        App::get('database')->insert('students', [
-//            'studendID' => $_POST['studentID'],
-//            'userID' => $_POST['userID']
+//            'studendID' => $studentID,
+//            'userID' => $userID
 //        ]);
+//
     }
 
     /**
@@ -74,7 +80,6 @@ class GetUserIDController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
