@@ -37,14 +37,17 @@ class GetUserIDController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $studentID, $userID)
+    public function store(Request $request, $student_id, $user_id)
     {
-        DB::insert('insert into students(studentID,userID) values(?,?)',[$studentID,$userID]);
-//        App::get('database')->insert('students', [
-//            'studendID' => $studentID,
-//            'userID' => $userID
-//        ]);
-//
+
+        Student::create(array(
+            'user_id' => $user_id,
+            'student_id' => $student_id
+        ));
+
+
+
+
     }
 
     /**

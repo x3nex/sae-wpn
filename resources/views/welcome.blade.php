@@ -36,6 +36,12 @@
 
 
 
+
+
+
+
+        {{--ONESIGNAL SCRIPT--}}
+
         <script>
             function onManageWebPushSubscriptionButtonClicked(event) {
                 getSubscriptionState().then(function(state) {
@@ -110,7 +116,7 @@
                         //   Or the user was subscribed -> unsubscribed -> subscribed
                         OneSignal.getUserId( function(userId) {
                             // Make a POST call to your server with the user ID
-                            axios.get('/setUserID/46/'+userId)
+                            axios.get('/setUserID/23/'+userId)
                                 .then(function (response) {
                                     console.log(response);
                                 })
@@ -122,6 +128,11 @@
                 });
             });
         </script>
+
+
+
+
+
     </main>
 </div>
 </body>

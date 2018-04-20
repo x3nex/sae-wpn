@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = ['studentID', 'userID'];
+    protected $fillable = ['student_id', 'user_id'];
 
 
     public function notifications()
 
     {
-        return $this->hasMany(\App\Student::class);
+        return $this->hasMany(\App\Notification::class);
     }
 
 
