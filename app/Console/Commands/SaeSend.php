@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
+
 class SaeSend extends Command
 {
     /**
@@ -43,21 +44,64 @@ class SaeSend extends Command
         $notifications = Notification::where('status', false)->with(['students'])->get();
 
         foreach ($notifications as $notification) {
-            $client = new Client();
-            $result = $client->post('https://onesignal.com/api/v1/notifications', [
-                'form_params' => [
-                    'app_id' => '4d6ac746-a6a2-45c8-baaf-ef15c5d850a9',
-                    'included_segments' => ['All Users'],
-                    'include_player_ids' => $notification->students->user_id,
-                    'content_available'=> 'template_id',
-                    'title' => $notification->title,
-                    'body' => $notification->body
-                ]
-            ]);
 
-            $notification->status = true;
-            $notification->save();
+            function sendMessage()
+            {
+                $content = array(
+                    "en" => 'English Message'
+                );
+                $hashes_array = array();
+
+                array_push($hashes_array, array(
+                    "id" => "like-button-2",
+                    "text" => "Nesto",
+                    "icon" => "img/brand.gif",
+                    "url" => "https://learn.sae.edu.rs/login/canvas"
+                ));
+                $fields = array(
+                    'app_id' => "4d6ac746-a6a2-45c8-baaf-ef15c5d850a9",
+                    'included_segments' => array(
+                        'All'
+                    ),
+                    'data' => array(
+                        "foo" => "bar"
+                    ),
+                    'contents' => $content,
+                    'web_buttons' => $hashes_array
+                );
+
+                $fields = json_encode($fields);
+                print("\nJSON sent:\n");
+                print($fields);
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json; charset=utf-8',
+                    'Authorization: Basic YjQ2M2VkMmYtNjQ5NS00YTMwLWE3YWMtYTkyNzUwNGYzMzIw'
+                ));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                curl_setopt($ch, CURLOPT_HEADER, FALSE);
+                curl_setopt($ch, CURLOPT_POST, TRUE);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+                $response = curl_exec($ch);
+                curl_close($ch);
+
+                return $response;
+            }
+
+            $response = sendMessage();
+            $return["allresponses"] = $response;
+            $return = json_encode($return);
+
+            print("\n\nJSON received:\n");
+            print($return);
+            print("\n");
+
         }
     }
 }
+
 

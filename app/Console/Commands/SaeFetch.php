@@ -49,7 +49,7 @@ class SaeFetch extends Command
             array('title','New Message'),
             array('body','Please check your email')
         );
-        
+
         Notification::create([
             'title' => $result[0][1],
             'body' => $result[1][1]
