@@ -54,7 +54,7 @@ class SaeSend extends Command
 
                 array_push($hashes_array, array(
                     "id" => "like-button-2",
-                    "text" => "Nesto",
+                    "text" => $notification->body,
                     "icon" => "img/brand.gif",
                     "url" => "https://learn.sae.edu.rs/login/canvas"
                 ));
