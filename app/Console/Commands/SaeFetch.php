@@ -4,8 +4,7 @@ namespace App\Console\Commands;
 use App\Notification;
 use App\Student;
 use Illuminate\Console\Command;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
+
 
 class SaeFetch extends Command
 {
@@ -46,20 +45,17 @@ class SaeFetch extends Command
 
         // mocking api
 
-        $result = [
+        $result = array(
+            array('title','New Message'),
+            array('body','Please check your email')
+        );
+        
+        Notification::create([
+            'title' => $result[0][1],
+            'body' => $result[1][1]
 
-            'title' => "New Message",
-            'body' => "Please check you email"
-    ];
+        ]);
 
-        foreach ($result as $notification) {
-
-            Notification::create([
-
-                'title' => $notification->title,
-                'body' => $notification->body
-            ]);
-        }
 
         }
 

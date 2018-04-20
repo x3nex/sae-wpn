@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Notification;
 use Illuminate\Console\Command;
-
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
 class SaeSend extends Command
@@ -26,8 +26,8 @@ class SaeSend extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
      */
+
     public function __construct()
     {
         parent::__construct();
