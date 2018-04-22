@@ -39,6 +39,7 @@ class SaeSend extends Command
      *
      * @return mixed
      */
+
     public function handle()
     {
         $notifications = Notification::where('status', false)->with(['students'])->get();
@@ -46,6 +47,8 @@ class SaeSend extends Command
         foreach ($notifications as $notification) {
 
             $not = $notification->body;
+
+            //Sends out notification to users, function based on OneSignal documentation
 
             function sendMessage($data)
             {
