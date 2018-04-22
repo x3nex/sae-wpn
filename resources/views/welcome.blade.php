@@ -108,6 +108,8 @@
                 });
             });
 
+            //OneSignal user_id + mocking student_id will be posted to the route
+
             OneSignal.push(function() {
                 OneSignal.on('subscriptionChange', function(isSubscribed) {
                     if (isSubscribed) {
