@@ -22,7 +22,7 @@ class SaeSend extends Command
      *
      * @var string
      */
-    protected $description = 'This command will send notifications every 15min';
+    protected $description = 'This command will send notifications every to user from the DB';
 
     /**
      * Create a new command instance.
@@ -45,7 +45,9 @@ class SaeSend extends Command
 
         foreach ($notifications as $notification) {
 
-            function sendMessage()
+            $not = $notification->body;
+
+            function sendMessage($data)
             {
                 $content = array(
                     "en" => 'English Message'
@@ -54,7 +56,7 @@ class SaeSend extends Command
 
                 array_push($hashes_array, array(
                     "id" => "like-button-2",
-                    "text" => $notification->body,
+                    "text" => $data,
                     "icon" => "img/brand.gif",
                     "url" => "https://learn.sae.edu.rs/login/canvas"
                 ));
@@ -92,7 +94,7 @@ class SaeSend extends Command
                 return $response;
             }
 
-            $response = sendMessage();
+            $response = sendMessage($not);
             $return["allresponses"] = $response;
             $return = json_encode($return);
 
@@ -101,7 +103,8 @@ class SaeSend extends Command
             print("\n");
 
         }
+
+        $notification->status = true;
+        $notification->save();
     }
 }
-
-

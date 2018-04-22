@@ -20,7 +20,7 @@ class SaeFetch extends Command
      *
      * @var string
      */
-    protected $description = 'This command will fetch notifications every 15min';
+    protected $description = 'This command will fetch notifications from the mocking API and store them into DB';
 
     /**
      * Create a new command instance.
